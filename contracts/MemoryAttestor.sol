@@ -3,11 +3,6 @@ pragma solidity ^0.8.24;
 
 import {AgentRegistry} from "./AgentRegistry.sol";
 
-/// @title MemoryAttestor
-/// @notice Records cryptographic commitments to agent decisions. Each
-/// attestation is a hash over the off-chain reasoning trace; the chain
-/// stores the hash + minimal metadata so consumers can verify a trace
-/// they later receive.
 contract MemoryAttestor {
     AgentRegistry public immutable registry;
 
@@ -18,7 +13,6 @@ contract MemoryAttestor {
         uint32 modelVersion;
     }
 
-    /// agentId => attestation index (monotonic) => attestation
     mapping(bytes32 => mapping(uint64 => Attestation)) public attestations;
     mapping(bytes32 => uint64) public nextIndex;
 
@@ -43,7 +37,7 @@ contract MemoryAttestor {
         bytes32 inputDigest,
         uint32 modelVersion
     ) external returns (uint64 index) {
-        (address operator,, , bool active) = registry.agents(agentId);
+        (address operator, , , bool active) = registry.agents(agentId);
         if (msg.sender != operator) revert NotOperator();
         if (!active) revert InactiveAgent();
 
