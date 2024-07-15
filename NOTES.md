@@ -33,3 +33,7 @@ only — proxies fight that.
 ## gas
 
 target: per-attestation < 100k gas. currently ~76k for warm SSTORE. ok.
+
+## signatures
+
+eth ecdsa for now. would consider bls if we move to a network with native pairings.
