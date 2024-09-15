@@ -90,3 +90,20 @@ class MemoryClient:
             "timestamp": ts,
             "model_version": mv,
         }
+
+
+
+    def verify(self, trace: Trace, on_chain_index: int) -> dict:
+        """Re-hash the local trace and compare to the on-chain attestation."""
+        d = trace.to_dict()
+        local_hash = "0x" + trace_hash(d).hex()
+        local_digest = "0x" + input_digest(d["input"]).hex()
+        on_chain = self.read(trace.agent_id, on_chain_index)
+        return {
+            "match": (local_hash == on_chain["trace_hash"]
+                      and local_digest == on_chain["input_digest"]),
+            "local_trace_hash": local_hash,
+            "on_chain_trace_hash": on_chain["trace_hash"],
+            "local_input_digest": local_digest,
+            "on_chain_input_digest": on_chain["input_digest"],
+        }
