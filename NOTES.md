@@ -41,3 +41,7 @@ eth ecdsa for now. would consider bls if we move to a network with native pairin
 ## hashing
 
 sorted-keys json + utf8 + keccak. simple to implement in any language.
+
+## retention
+
+off-chain trace storage is the operator's problem. recommended: s3 with object lock keyed by trace_hash.
