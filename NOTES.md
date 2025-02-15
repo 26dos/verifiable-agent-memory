@@ -49,3 +49,7 @@ off-chain trace storage is the operator's problem. recommended: s3 with object l
 ## deploy
 
 hardcoded deployer address; revisit when going to mainnet.
+
+## contract size
+
+attestor + registry < 24kb each. plenty of headroom.
