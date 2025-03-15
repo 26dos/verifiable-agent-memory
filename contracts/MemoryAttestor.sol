@@ -11,6 +11,7 @@ contract MemoryAttestor {
         bytes32 inputDigest;
         uint64 timestamp;
         uint32 modelVersion;
+        bytes32 reasonCode;  // optional, e.g. keccak("liquidation_response")
     }
 
     mapping(bytes32 => mapping(uint64 => Attestation)) public attestations;
@@ -21,7 +22,8 @@ contract MemoryAttestor {
         uint64 indexed index,
         bytes32 traceHash,
         bytes32 inputDigest,
-        uint32 modelVersion
+        uint32 modelVersion,
+        bytes32 reasonCode
     );
 
     error NotOperator();
@@ -35,7 +37,8 @@ contract MemoryAttestor {
         bytes32 agentId,
         bytes32 traceHash,
         bytes32 inputDigest,
-        uint32 modelVersion
+        uint32 modelVersion,
+        bytes32 reasonCode
     ) external returns (uint64 index) {
         (address operator, , , bool active) = registry.agents(agentId);
         if (msg.sender != operator) revert NotOperator();
@@ -46,11 +49,12 @@ contract MemoryAttestor {
             traceHash: traceHash,
             inputDigest: inputDigest,
             timestamp: uint64(block.timestamp),
-            modelVersion: modelVersion
+            modelVersion: modelVersion,
+            reasonCode: reasonCode
         });
         unchecked {
             nextIndex[agentId] = index + 1;
         }
-        emit Attested(agentId, index, traceHash, inputDigest, modelVersion);
+        emit Attested(agentId, index, traceHash, inputDigest, modelVersion, reasonCode);
     }
 }
