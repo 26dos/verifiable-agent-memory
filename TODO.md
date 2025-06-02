@@ -13,3 +13,4 @@
 - [ ] estimate_gas() helper for budgeting agents
 - [ ] expand docs/lifecycle.md with batch vs single guidance
 - [ ] examples/batch_publish.py
+- [ ] the graph subgraph for indexing attestations
