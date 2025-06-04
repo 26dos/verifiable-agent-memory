@@ -9,3 +9,4 @@
 - [ ] github actions for forge + python
 - [ ] sdk: setup.cfg / pyproject for pip install
 - [ ] gas costs document with break-even point for batch
+- [ ] sdk __init__ exposes top-level API
