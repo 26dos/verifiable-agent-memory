@@ -85,3 +85,7 @@ attestBatch with 32 leaves: ~85k gas. break-even at ~4 leaves vs single attest.
 ## clients
 
 thought about a typescript sdk; deferred for now. python first.
+
+## client
+
+web3 client doesn't retry; relies on caller. fine for now.
