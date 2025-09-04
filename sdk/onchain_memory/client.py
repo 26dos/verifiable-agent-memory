@@ -108,3 +108,16 @@ class MemoryClient:
             "local_input_digest": local_digest,
             "on_chain_input_digest": on_chain["input_digest"],
         }
+
+
+
+    def estimate_gas(self, trace: Trace, reason_code: str = "") -> int:
+        """Estimate gas for an attestation; useful for budgeting agents."""
+        agent_id = _to_bytes32(trace.agent_id)
+        d = trace.to_dict()
+        th = trace_hash(d)
+        idg = input_digest(d["input"])
+        rc = _to_bytes32(reason_code) if reason_code else b"\x00" * 32
+        return int(self.contract.functions.attest(
+            agent_id, th, idg, int(trace.model_version), rc,
+        ).estimate_gas({"from": self.account.address if self.account else None}))
