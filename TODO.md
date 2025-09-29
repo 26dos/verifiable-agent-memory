@@ -11,3 +11,4 @@
 - [ ] gas costs document with break-even point for batch
 - [ ] sdk __init__ exposes top-level API
 - [ ] estimate_gas() helper for budgeting agents
+- [ ] expand docs/lifecycle.md with batch vs single guidance
