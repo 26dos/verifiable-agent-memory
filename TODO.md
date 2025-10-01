@@ -16,3 +16,4 @@
 - [ ] the graph subgraph for indexing attestations
 - [ ] deployment scripts for arbitrum / base
 - [ ] BatchAttested event (already done, verify in tests)
+- [ ] docs/motivation.md — why on-chain at all
