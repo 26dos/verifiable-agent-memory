@@ -89,3 +89,7 @@ thought about a typescript sdk; deferred for now. python first.
 ## client
 
 web3 client doesn't retry; relies on caller. fine for now.
+
+## zk
+
+thought about zk-snark proof of trace authenticity. overkill for now.
