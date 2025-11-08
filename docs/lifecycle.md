@@ -37,3 +37,25 @@ authoritative identity of the trace.
 consumers care about "what did the agent see?" without needing the full
 reasoning trace — e.g., for replaying the same input through a different
 model.
+
+
+
+## When to batch
+
+Use `MemoryAttestor.attest` (single) when:
+  - You make ≤ 3 decisions per minute on the chain you're committing to.
+  - You need each decision to land in a specific block (e.g. for ordering).
+
+Use `BatchAttestor.attestBatch` (merkle) when:
+  - You make many small decisions and only need eventual auditability.
+  - You can tolerate a delay between decision and on-chain commitment.
+  - Gas is precious — see `docs/gas.md` for the break-even point.
+
+## A word on retention
+
+The on-chain hash is forever (cheap). The off-chain trace is your
+responsibility. We recommend:
+  - Producer-side: store traces in append-only storage (S3 with object lock,
+    IPFS pin, etc.) keyed by trace_hash.
+  - Public consumer: any third party who wants to verify a trace must
+    hold their own copy of the trace, or trust an aggregator.
