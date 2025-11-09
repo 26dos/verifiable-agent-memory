@@ -17,3 +17,4 @@
 - [ ] deployment scripts for arbitrum / base
 - [ ] BatchAttested event (already done, verify in tests)
 - [ ] docs/motivation.md — why on-chain at all
+- [ ] wagmi-style hooks for react frontends (out of scope?)
