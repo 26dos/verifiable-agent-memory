@@ -19,3 +19,4 @@
 - [ ] docs/motivation.md — why on-chain at all
 - [ ] wagmi-style hooks for react frontends (out of scope?)
 - [ ] sdk cli: verify a local trace against on-chain digest
+- [ ] typescript sdk (probably needs viem)
