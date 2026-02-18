@@ -101,3 +101,7 @@ recommend `org/agent-name@version` convention. no enforcement on chain.
 ## 2026
 
 plan: docs polish + l2 deployment scripts. no big new features.
+
+## solana
+
+decided not to do a solana version — different account model, breaks the abstractions.
