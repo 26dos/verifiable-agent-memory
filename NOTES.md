@@ -19,3 +19,13 @@ questions:
   - merkle tree for batch commitments (cheaper)?
   - signature schemes — eth ecdsa for now, eventually bls?
   - retention: how long do we keep the off-chain artifacts? IPFS?
+
+
+
+## Upgrade path
+
+The current contracts are non-upgradeable on purpose. If we need to add a
+field to attestations later, the cleaner answer is to deploy a new
+`MemoryAttestor` and let agents reference both during a migration window.
+The pattern of doing on-chain attestations is meant to be cheap and append-
+only — proxies fight that.
