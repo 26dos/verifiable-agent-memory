@@ -105,3 +105,7 @@ plan: docs polish + l2 deployment scripts. no big new features.
 ## solana
 
 decided not to do a solana version — different account model, breaks the abstractions.
+
+## status (apr 2026)
+
+stable, low-maintenance. just answering issues now.
