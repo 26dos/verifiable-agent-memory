@@ -1,4 +1,4 @@
-# onchain-agent-memory
+# verifiable-agent-memory
 
 Verifiable trace registry for AI agent decisions.
 
